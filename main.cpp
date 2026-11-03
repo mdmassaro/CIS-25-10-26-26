@@ -10,9 +10,16 @@ int main() {
 
     bool isRunning = true;
     char keyGrab;
+    int width, height;
 
     Player player;
-    Room room(10, 10, &player);
+
+    cout << "Enter width for map: ";
+    cin >> width;
+    cout << "Enter height for map: ";
+    cin >> height;
+
+    Room room(width, height, &player);
 
     while(isRunning) {
 
