@@ -16,6 +16,6 @@ class Inventory {
         bool hasItem(char id);
         Inventory(); // allocate space for 2 items initially
         ~Inventory(); // deallocate items array
-        string printInventory();
+        void printInventory();
 };
 #endif

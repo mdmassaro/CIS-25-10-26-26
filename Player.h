@@ -20,7 +20,7 @@ class Player {
         bool move(char direction, Room * room); // need to get rid of room
         int getX();
         int getY();
-        string printInventory();
+        void printInventory();
 
 };
 #endif

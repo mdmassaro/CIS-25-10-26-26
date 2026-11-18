@@ -19,24 +19,36 @@ bool Player::move(char dir, Room * room){
         // check if anything blocking new position
         if(room->canMove(this->x, this->y - 1)){
             this->y -= 1;
+            if(room->tileAt(this->x, this->y) != ' '){
+                this->getItem(room, this->x, this->y);
+            }
             return true;
         }
 
     } else if(dir == 'a'){
         if(room->canMove(this->x - 1, this->y)){
             this->x -= 1;
+            if(room->tileAt(this->x, this->y) != ' '){
+                this->getItem(room, this->x, this->y);
+            }
             return true;
         }
 
     } else if(dir == 's'){
         if(room->canMove(this->x, this->y + 1)){
             this->y += 1;
+            if(room->tileAt(this->x, this->y) != ' '){
+                this->getItem(room, this->x, this->y);
+            }
             return true;
         }
         
     }else if(dir == 'd'){
         if(room->canMove(this->x + 1, this->y)){
             this->x += 1;
+            if(room->tileAt(this->x, this->y) != ' '){
+                this->getItem(room, this->x, this->y);
+            }
             return true;
         }
     }
@@ -55,6 +67,6 @@ void Player::getItem(Room * room, int x, int y){
     this->inventory.addItem(newItem);
 }
 
-string Player::printInventory(){
-    return inventory.printInventory();
+void Player::printInventory(){
+    inventory.printInventory();
 }

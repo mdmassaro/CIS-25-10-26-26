@@ -28,6 +28,7 @@ class Room {
         Room(int x, int y, Player * player); // allocate the map
         ~Room(); // deallocate the map
         void draw(); // room draws itself
+        char tileAt(int x, int y);
         bool canMove(int x, int y);
         void placeItem(Item * i, int x, int y);
         Item takeItem(int x, int y);

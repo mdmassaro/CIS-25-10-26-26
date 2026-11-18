@@ -56,8 +56,10 @@ bool Inventory::removeItem(char id){
         
 bool Inventory::hasItem(char id){}
 
-string Inventory::printInventory(){
+void Inventory::printInventory(){
+    cout << endl << "Player's Inventory: ";
     for(int i = 0; i < numOfItems; i++){
-        cout << this->items[i]->getID();
+        if(i == numOfItems - 1) {cout << this->items[i]->getNameFromId(items[i]->getID()) << endl;}
+        else{ cout << this->items[i]->getNameFromId(items[i]->getID()) << ", "; }
     }
 }

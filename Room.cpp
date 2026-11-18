@@ -17,6 +17,9 @@ Room::Room(int x, int y, Player * player){
             if(i == 0 || j == 0 || i == (y-1) || j == (x-1)){
                 this->mapRows[i][j] = '#';
             }
+            else if(rand() % 8 == 0 && i > 1 && i <(y-2) && j > 1 && j < (x-2)){
+                this->mapRows[i][j] = '#';
+            }
             else{
                 this->mapRows[i][j] = ' ';
             }
@@ -40,6 +43,10 @@ void Room::draw(){
     }
 }
 
+char Room::tileAt(int x, int y){
+    return this->mapRows[y][x];
+}
+
 bool Room::canMove(int x, int y){
     if(mapRows[y][x] != '#'){
         return true;
@@ -53,7 +60,7 @@ void Room::placeItem(Item * i, int x, int y){
 }
 
 Item Room::takeItem(int x, int y){
-    Item newItem = Item(this->mapRows[y][x], Item.getNameFromId(this->mapRows[y][x]));
+    Item newItem(this->mapRows[y][x], Item::getNameFromId(this->mapRows[y][x]));
     this->mapRows[y][x] = ' ';
     return newItem;
 }

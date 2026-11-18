@@ -10,9 +10,12 @@ void Item::setID(char id){ this->id = id; }
 
 void Item::setName(string name){ this->name = name; }
 
-static string Item::getNameFromId(char i){
+string Item::getNameFromId(char i){
     if(i == 'k'){
         return "key";
+    }
+    else if(i == 'p'){
+        return "potion";
     }
     else {
         return "N/A"; // would like to through error

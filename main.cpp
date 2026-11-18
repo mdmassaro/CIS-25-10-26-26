@@ -1,4 +1,6 @@
 #include <iostream>
+#include <cstdlib>
+#include <ctime>
 #include "Room.h"
 #include "Player.h"
 #include "Item.h"
@@ -10,6 +12,8 @@ using namespace std;
 
 int main() {
 
+    srand(time(0));
+
     bool isRunning = true;
     char keyGrab;
     int width, height;
@@ -17,6 +21,7 @@ int main() {
     Player player;
 
     Item key('k', "key");
+    Item potion('p', "potion");
 
     cout << "Enter width for map: ";
     cin >> width;
@@ -25,11 +30,12 @@ int main() {
 
     Room room(width, height, &player);
     room.placeItem(&key, 2, 2);
+    room.placeItem(&potion, 4, 4);
 
     while(isRunning) {
 
         room.draw();
-        cout << player.printInventory();
+        player.printInventory();
 
         cout << endl << endl << "Please use the wasd keys to move or press q to quit: ";
         cin >> keyGrab;
