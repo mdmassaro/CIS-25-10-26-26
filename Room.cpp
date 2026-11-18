@@ -24,15 +24,13 @@ Room::Room(int x, int y, Player * player){
     }
 }
 
-Room::~Room(){
-
-}
+Room::~Room(){}
 
 void Room::draw(){
 
     for(int i = 0; i < height; i++){
         for(int j = 0; j < width; j++){
-    
+            // check for player position
             if(player->getX() == j && player->getY() == i){
                 cout << '@';
             }
@@ -42,12 +40,20 @@ void Room::draw(){
     }
 }
 
-//char tileAt();
-
 bool Room::canMove(int x, int y){
     if(mapRows[y][x] != '#'){
         return true;
     } else {
         return false;
     }
+}
+
+void Room::placeItem(Item * i, int x, int y){
+    this->mapRows[y][x] = i->getID();
+}
+
+Item Room::takeItem(int x, int y){
+    Item newItem = Item(this->mapRows[y][x], Item.getNameFromId(this->mapRows[y][x]));
+    this->mapRows[y][x] = ' ';
+    return newItem;
 }

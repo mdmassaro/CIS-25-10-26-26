@@ -5,6 +5,7 @@
 #ifndef ROOM_H
 #define ROOM_H
 #include "Player.h"
+#include "Item.h"
 
 class Room {
     private:
@@ -27,7 +28,8 @@ class Room {
         Room(int x, int y, Player * player); // allocate the map
         ~Room(); // deallocate the map
         void draw(); // room draws itself
-        // char tileAt(int x, int y);
         bool canMove(int x, int y);
+        void placeItem(Item * i, int x, int y);
+        Item takeItem(int x, int y);
 };
 #endif

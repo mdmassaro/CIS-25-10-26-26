@@ -1,15 +1,16 @@
 #include "Player.h"
 #include "Room.h"
+#include "Item.h"
 using namespace std;
 
 Player::Player(){
     this->x = 3;
     this->y = 3;
-
 }
 
 Player::~Player(){}
 
+// The Player owns an Inventory. After a move, it takes anything lying on its new space and adds it to the inventory.
 bool Player::move(char dir, Room * room){
     // take direction, chech which direction and check if they are able to move there
     // if passes then change player x and y
@@ -47,3 +48,13 @@ bool Player::move(char dir, Room * room){
 int Player::getX(){ return this->x; }
 
 int Player::getY(){ return this->y; }
+
+void Player::getItem(Room * room, int x, int y){
+    Item itemFromMap = room->takeItem(x, y);
+    Item * newItem = new Item(itemFromMap.getID(), itemFromMap.getName());
+    this->inventory.addItem(newItem);
+}
+
+string Player::printInventory(){
+    return inventory.printInventory();
+}

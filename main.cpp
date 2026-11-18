@@ -1,6 +1,8 @@
 #include <iostream>
 #include "Room.h"
 #include "Player.h"
+#include "Item.h"
+#include "Inventory.h"
 using namespace std;
 
 // When the program starts, it asks the user how big the map should be: a number of rows and a number of columns.
@@ -14,16 +16,20 @@ int main() {
 
     Player player;
 
+    Item key('k', "key");
+
     cout << "Enter width for map: ";
     cin >> width;
     cout << "Enter height for map: ";
     cin >> height;
 
     Room room(width, height, &player);
+    room.placeItem(&key, 2, 2);
 
     while(isRunning) {
 
         room.draw();
+        cout << player.printInventory();
 
         cout << endl << endl << "Please use the wasd keys to move or press q to quit: ";
         cin >> keyGrab;
@@ -35,6 +41,5 @@ int main() {
         }
     }
 
-    
     return 0;
 }

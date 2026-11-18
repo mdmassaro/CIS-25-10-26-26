@@ -1,17 +1,18 @@
-#include <iostream>
 #ifndef ITEM_H
 #define ITEM_H
+#include <iostream>
 using namespace std;
 
 class Item {
     private:
-        string id;
+        char id;
         string name;
     public:
-        Item(string id = "*", string name = "empty space");
-        string getID();
+        Item(char id = '*', string name = "empty space");
+        char getID();
         string getName();
-        void setID(string id);
+        void setID(char id);
         void setName(string name);
+        static string getNameFromId(char id);
 };
 #endif
